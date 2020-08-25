@@ -25,7 +25,7 @@ Output: 6
 ```
 
 ### Solution:
-
+My Solution
 ``` java
 class Solution {
     public int trap(int[] height) {
@@ -59,6 +59,28 @@ class Solution {
 
 ```
 
+
+Optimal Solution
+```java
+
+class Solution {
+    public int trap(int[] height) {
+        int water = 0, leftPeak = 0, rightPeak = 0;
+        for (int i = 0, j = height.length - 1; i <= j; ) {
+            leftPeak = Math.max(leftPeak, height[i]);
+            rightPeak = Math.max(rightPeak, height[j]);
+            if (leftPeak <= rightPeak) {
+                water += leftPeak - height[i];
+                i++;
+            } else {
+                water += rightPeak - height[j];
+                j--;
+            }
+        }
+        return water;
+    }
+}
+```
 
 Links
 Medium Link[https://medium.com/@harycane/trapping-rain-water-8a1817b82d98]
